@@ -15,38 +15,25 @@ struct ContentView: View {
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
     
-    // MARK: - Alert properties
-    @State private var alertTitle = ""
-    @State private var alertMessage = ""
-    @State private var showingAlert = false
-    
     // MARK: - View body
     var body: some View {
         NavigationView {
             Form {
                 // MARK: WakeUp time
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("When do you want to wake up?")
-                        .font(.headline)
-                    
+                Section(header: Text("When do you want to wake up?")) {
                     DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
                         .labelsHidden()
                         .datePickerStyle(WheelDatePickerStyle())
                 }
                 // MARK: Desired sleep
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Desired amount of sleep")
-                        .font(.headline)
-                    
+                Section(header: Text("Desired amount of sleep")) {
                     Stepper(value: $sleepAmount, in: 4...12) {
                         Text("\(sleepAmount, specifier: "%g") hours")
                     }
                 }
                 // MARK: Coffee intake
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Daily coffee intake")
-                        .font(.headline)
-                    
+                Section(header: Text("Daily coffee intake")) {
+                    // Stepper version
                     Stepper(value: $coffeeAmount, in: 1...20) {
                         if coffeeAmount == 1 {
                             Text("1 cup")
@@ -54,17 +41,20 @@ struct ContentView: View {
                             Text("\(coffeeAmount) cups")
                         }
                     }
+                    // Picker version (I didn't liked it so I commented it
+//                    Picker(selection: $coffeeAmount, label: coffeeAmount == 1 ? Text("1 cup") : Text("\(coffeeAmount) cups")) {
+//                        ForEach(1...20, id: \.self) {
+//                            Text("\($0)")
+//                        }
+//                    }
+                }
+                // MARK: Recomended bed time
+                Section(header: Text("Recomended bedtime:")) {
+                    Text(calculateBedtime())
+                        .font(.title)
                 }
             }
             .navigationBarTitle("BetterRest")
-            .navigationBarItems(trailing:
-                Button(action: calculateBedtime){
-                    Text("Calculate")
-                }
-            )
-            .alert(isPresented: $showingAlert) { () -> Alert in
-                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-            }
         }
     }
     
@@ -81,7 +71,7 @@ struct ContentView: View {
     
     // MARK: - Bed time (ML)
     /// Calculates and shows the best time to go to bed, based on ML data NOT PURE
-    func calculateBedtime() {
+    func calculateBedtime() -> String {
         // Initializing ML
         let model = SleepCalculator()
         // Converting wakeUp time to seconds
@@ -98,13 +88,10 @@ struct ContentView: View {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
             
-            alertTitle = "Your ideal bedtime is..."
-            alertMessage = formatter.string(from: sleepTime)
+            return formatter.string(from: sleepTime)
         } catch {
-            alertTitle = "Error"
-            alertMessage = "Your machine took a day off"
+            return "Error: Your machine is on vecations"
         }
-        showingAlert = true
     }
     
     
