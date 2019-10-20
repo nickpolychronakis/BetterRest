@@ -15,6 +15,7 @@
 		4E568B0C235B83D900E2E65A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E568B0A235B83D900E2E65A /* LaunchScreen.storyboard */; };
 		4E568B17235B83D900E2E65A /* BetterRestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568B16235B83D900E2E65A /* BetterRestTests.swift */; };
 		4E568B22235B83D900E2E65A /* BetterRestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568B21235B83D900E2E65A /* BetterRestUITests.swift */; };
+		4E6E11DD235C52D100DA701D /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4E6E11DC235C52D100DA701D /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4E568B1D235B83D900E2E65A /* BetterRestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterRestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E568B21235B83D900E2E65A /* BetterRestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterRestUITests.swift; sourceTree = "<group>"; };
 		4E568B23235B83D900E2E65A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E6E11DC235C52D100DA701D /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				4E568B05235B83D900E2E65A /* Assets.xcassets */,
 				4E568B0A235B83D900E2E65A /* LaunchScreen.storyboard */,
 				4E568B0D235B83D900E2E65A /* Info.plist */,
+				4E6E11DC235C52D100DA701D /* SleepCalculator.mlmodel */,
 				4E568B07235B83D900E2E65A /* Preview Content */,
 			);
 			path = BetterRest;
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E568B00235B83D800E2E65A /* AppDelegate.swift in Sources */,
+				4E6E11DD235C52D100DA701D /* SleepCalculator.mlmodel in Sources */,
 				4E568B02235B83D800E2E65A /* SceneDelegate.swift in Sources */,
 				4E568B04235B83D800E2E65A /* ContentView.swift in Sources */,
 			);
